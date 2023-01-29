@@ -6,7 +6,7 @@ import fetch from "node-fetch"
 export const getUsers = async(req, res) => {
 	try {
 		const users = await Users.findAll({
-			attributes:[ 'id', 'name', 'email']
+			attributes:[ 'id', 'name', 'email', 'city']
 		})
 		res.json(users)
 	} catch (error) {
@@ -24,15 +24,14 @@ export const Register = async (req, res) => {
 	})
 	if(user[0]) return res.status(400).json({msg: "email has used"})
 
-	if(password !== confPassword) return res.status(400).json(
-		{msg: "Password harus sama dengan konfirmasi password"})
+	if(password !== confPassword) return res.status(400).json({msg: "Password harus sama dengan konfirmasi password"})
 	const salt  =  await bcrypt.genSalt()
 	const hashPassword = await bcrypt.hash(password, salt)
 
 	const apiKey = '0e7fe0142af0cbca332e5211b4a78f12'
 	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`);
 	const body = await response.json();
-	if(body.cod != 200) return res.status(400).json({msg: "wrong city"})
+	if(body.cod != 200) return res.status(400).json({msg: "Kota Tidak Ditemukan"})
 	
 	try {
 		await Users.create({

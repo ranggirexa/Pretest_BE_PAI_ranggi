@@ -12,6 +12,8 @@ const Field_edit = () => {
 	const [token, setToken] = useState('')
 	const [expire, setExpire] = useState('')
 	const {id} = useParams()
+	const [msg, setMsg] = useState('')
+
     const navigate =useNavigate()
 
 	useEffect(() => {
@@ -79,7 +81,9 @@ const Field_edit = () => {
 			})
             navigate("/dashboard/fields")
 		} catch (error) {
-			console.log(error);
+			if(error.response){
+				setMsg(error.response.data.msg)
+			}
 		}
 	}
 
@@ -87,6 +91,8 @@ const Field_edit = () => {
 		<div className="columns mt-5 is-centered">
 			<div className="column is-half">
 				<form onSubmit={update_field}>
+					<p className='has-text-centered'>{msg}</p>
+
 					<input type="hidden"className="input"  value={user_id} />
 
 					<div className="field">

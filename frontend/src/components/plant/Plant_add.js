@@ -110,8 +110,8 @@ const Plant_add = () => {
 						<div className="control select is-primary">
 						<select value={plant_condition} onChange={(e)=>set_Plant_condition(e.target.value)}>
 							<option value='0' >--pilih--</option>
-							<option value='Normal' >Normal</option>
-							<option value='Tidak Normal' >Tidak Normal</option>
+							<option value='normal' >Normal</option>
+							<option value='tidak normal' >Tidak Normal</option>
 						</select>
 						</div>
 					</div>

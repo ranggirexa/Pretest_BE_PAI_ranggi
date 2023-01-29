@@ -18,7 +18,7 @@ const Register = () => {
 			await axios.post('http://localhost:5000/users',{
 				name: name,
 				email: email,
-				location: location,
+				city: location,
 				password: password,
 				confPassword: confPassword
 			})
@@ -37,6 +37,7 @@ const Register = () => {
 			<div className="column is-centered">
 				<div className="column is-4-dekstop" >
 					<form onSubmit={Register} className="box">
+					<p className='has-text-centered'>{msg}</p>
 						<div className="field mt-5">
 							<label className='label'>Name</label>
 							<div className="controls">
@@ -54,8 +55,8 @@ const Register = () => {
 						<div className="field mt-5">
 							<label className='label'>Lokasi</label>
 							<div className="controls">
-								<input type="text" className="input" placeholder='Email'
-								value = {email} onChange={(e) => setLocation(e.target.value)} />
+								<input type="text" className="input" placeholder='Lokasi'
+								value = {location} onChange={(e) => setLocation(e.target.value)} />
 							</div>
 						</div>
 						<div className="field mt-5">

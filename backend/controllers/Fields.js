@@ -8,7 +8,7 @@ export const add_field = async (req, res) => {
 	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${field_location}&units=metric&APPID=${apiKey}`);
 	const body = await response.json();
 	// console.log(body.main.temp);
-	if(body.cod != 200) return res.status(400).json({msg: "kota tidak ditemukan"})
+	if(body.cod != 200) return res.status(400).json({msg: "kota lokasi lahan tidak ditemukan"})
 
 	try {
 		await Fields.create({
@@ -53,6 +53,14 @@ export const get_field_by_id = async(req, res) => {
 
 export const update_field = async(req, res) => {
 	const {field_code, field_area, field_location} = req.body
+
+
+	const apiKey = '0e7fe0142af0cbca332e5211b4a78f12'
+	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${field_location}&units=metric&APPID=${apiKey}`);
+	const body = await response.json();
+	// console.log(body.main.temp);
+	if(body.cod != 200) return res.status(400).json({msg: "kota lokasi lahan tidak ditemukan"})
+
 
 	const fields = await Fields.findOne({
 		where:{

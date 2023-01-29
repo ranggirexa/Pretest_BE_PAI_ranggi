@@ -11,6 +11,7 @@ const Field_add = () => {
     const [user_id, set_user_id]=useState("")
 	const [token, setToken] = useState('')
 	const [expire, setExpire] = useState('')
+	const [msg, setMsg] = useState('')
     const navigate =useNavigate()
 
 	useEffect(() => {
@@ -68,7 +69,9 @@ const Field_add = () => {
             })
             navigate("/dashboard/fields")
         } catch (error) {
-            console.log(error);
+            if(error.response){
+				setMsg(error.response.data.msg)
+			}
         }
     }
 
@@ -76,6 +79,8 @@ const Field_add = () => {
 		<div className="columns mt-5 is-centered">
 			<div className="column is-half">
 				<form onSubmit={saveField}>
+					<p className='has-text-centered'>{msg}</p>
+
 					<input type="hidden"className="input"  value={user_id} />
 
 					<div className="field">
