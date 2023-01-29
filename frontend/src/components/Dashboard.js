@@ -2,19 +2,30 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
+import {Line} from 'react-chartjs-2'
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
+
+ChartJS.register(
+	LineElement,
+	CategoryScale,
+	LinearScale,
+	PointElement
+)
 
 const Dashboard = () => {
 	const [name, setName] = useState('')
 	const [token, setToken] = useState('')
 	const [expire, setExpire] = useState('')
-	const [users, setUsers] = useState([])
+	const [fields, set_field] = useState([])
+	const [plants, set_plant] = useState([])
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		refreshToken()
-		getUsers()
+		// getUsers()
+		get_field()
 	}, [])
-
+ 
 	const refreshToken = async() => {
 		try {
 			const response = await axios.get('http://localhost:5000/token')
@@ -46,40 +57,65 @@ const Dashboard = () => {
 		return Promise.reject(error)
 	})
 
-	const getUsers = async() => {
-		const response = await axiosJWT.get('http://localhost:5000/users',{
+	const get_field = async() => {
+		const response = await axiosJWT.get('http://localhost:5000/dashboard',{
 			headers:{
 				Authorization: `Bearer ${token}`
 			}
 		})
-		setUsers(response.data)
+		const plant = response.data.plants
+		set_plant(plant.map((plant) => (
+			parseInt(plant.plantCount, 10 )
+		)))
+		set_field(plant.map((field) => (
+			field.field.field_location
+		)))
+		console.log('plant ', plants );
 	}
 
-  return (
-	<div className="container mt-5" >
-		<h1> Wellcome Back: {name}</h1>
+	const data = {
+		labels:fields,
+		datasets: [{
+			data: plants,
+			backgroundColor: 'transparent',
+			borderColor: '#f26c6d',
+			pointBorderColor: 'transparent',
+			pointBorderWidth: 4,
+			tension: 0.5,
+		}]
+	}
+	const options={
+		plugins:{
+			legend: false
+		},
+		scales:{
+			x: {
+				grid:{
+					borderDash: [10]
+				}
+			},
+			y:{
+				min:0,
+				max: 500,
+				ticks:{
+					stepSize: 1,
+					// callback:(value) => value + "K"
+				},
+				grid :{
+					borderDash: [10]
+				}
+			}
+		}
+	}
 
-		<button onClick={getUsers} className='button is-info'> Get Users </button>
-		<table className='table is-triped is-fullwidth'>
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>Name</th>
-					<th>Email</th>
-				</tr>
-			</thead>
-			<tbody>
-				{users.map((user, index) => (
-					<tr key = {user.id}>
-						<td> {index  + 1} </td>
-						<td> {user.name} </td>
-						<td> {user.email} </td>
-					</tr>
-				))}
-			</tbody>
-		</table>
-	</div>
-  )
+	return (
+		<div className="container mt-5" >
+			<h1> Wellcome Back: {name}</h1>
+			<div  className='mb-2'>
+				<Line data = {data} options={options}>  </Line>
+			</div>
+		</div>
+	)
 }
 
 export default Dashboard

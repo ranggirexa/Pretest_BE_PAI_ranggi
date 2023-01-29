@@ -7,6 +7,7 @@ const Plant_add = () => {
 	const [field_code, set_Field_code]=useState("")
 	const [plant_name, set_Plant_name]=useState("")
 	const [plant_condition, set_Plant_condition]=useState("")
+	const [plant_quantity, set_Plant_quantity]=useState("")
 	const [field, set_field] = useState([])
     const [user_id, set_user_id]=useState("")
 	const [token, setToken] = useState('')
@@ -70,6 +71,7 @@ const Plant_add = () => {
 		formData.append("id_field", field_code)
 		formData.append("plant_name", plant_name)
 		formData.append("plant_condition", plant_condition)
+		formData.append("plant_quantity", plant_quantity)
 
         try {
             await axiosJWT.post('http://localhost:5000/plant', formData,{
@@ -95,6 +97,12 @@ const Plant_add = () => {
 						<label className="label">Nama Tanaman</label>
 						<div className="control">
 							<input type="text" className="input" value={plant_name} onChange={(e)=>set_Plant_name(e.target.value)} placeholder='nama tanaman'/>
+						</div>
+					</div>
+					<div className="field">
+						<label className="label">Jumlah Tanaman</label>
+						<div className="control">
+							<input type="text" className="input" value={plant_quantity} onChange={(e)=>set_Plant_quantity(e.target.value)} placeholder='Jumlah tanaman'/>
 						</div>
 					</div>
 					<div className="field">

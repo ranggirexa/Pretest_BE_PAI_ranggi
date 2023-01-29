@@ -29,6 +29,10 @@ const Plants = db.define('plants', {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
+	plant_quantity:{
+		type: DataTypes.INTEGER,
+		allowNull: false,
+	},
 },{
 	freezeTableName: true,
 })

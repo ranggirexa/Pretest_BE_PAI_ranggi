@@ -5,6 +5,7 @@ import { add_plant, delete_plant, get_plant_by_field, get_plant_by_id, get_plant
 import { get_city, get_city_by_id } from "../controllers/Cities.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
+import { get_data_for_graph } from "../controllers/dashboard.js";
 
 const router = express.Router()
 
@@ -30,6 +31,10 @@ router.delete('/plant/:id',verifyToken, delete_plant)
 
 router.get('/city/:id', verifyToken, get_city_by_id)
 router.get('/city', verifyToken, get_city)
+
+router.get('/dashboard', verifyToken, get_data_for_graph)
+
+
 
 
 export default router

@@ -3,7 +3,7 @@ import Fields from "../models/fieldModel.js"
 import {Op} from "sequelize";
 
 export const add_plant = async (req, res) => {
-	const {plant_name, plant_condition, id_field} = req.body
+	const {plant_name, plant_condition, id_field, plant_quantity} = req.body
 
 	const fields = await Fields.findOne({
 		where:{
@@ -20,6 +20,7 @@ export const add_plant = async (req, res) => {
 			id_field: id_field,
 			plant_name: plant_name,
 			plant_condition: plant_condition,
+			plant_quantity: plant_quantity,
 		})
 		res.json({msg: "tambah Tanaman Berhasil"})
 	} catch (error) {
@@ -49,21 +50,6 @@ export const get_plant_by_user = async(req, res) => {
 
 	try {
 		const plants = await Plants.findAll({
-			// where:{
-			// 	[Op.or]: [{plant_name:{
-			// 		[Op.like]: '%'+search+'%'
-			// 	}}, 
-			// 	{plant_condition:{
-			// 		[Op.like]: '%'+search+'%'
-			// 	}},
-			// 	{'$Plants.Fields.field_code$':{
-			// 		[Op.like]: '%'+search+'%'
-			// 	}}, 
-			// 	{'$Plants.Fields.field_location$':{
-			// 		[Op.like]: '%'+search+'%'
-			// 	}}],
-			// 	id_user:req.user_id
-			// },
 			include:[{
 				model:Fields, as:'field',required: true, 
 				duplicating: false,
@@ -83,14 +69,6 @@ export const get_plant_by_user = async(req, res) => {
 					}}],
 					id_user:req.user_id
 				},
-				// where:{
-				// 	[Op.or]: [{field_code:{
-				// 		[Op.like]: '%'+search+'%'
-				// 	}}, 
-				// 	{field_location:{
-				// 		[Op.like]: '%'+search+'%'
-				// 	}}]
-				// },
 			}],
 			offset: offset,
        	 	limit: limit,
@@ -138,7 +116,7 @@ export const get_plant_by_id = async(req, res) => {
 }
 
 export const update_plant = async(req, res) => {
-	const {plant_name, plant_condition, id_field} = req.body
+	const {plant_name, plant_condition, id_field, plant_quantity} = req.body
 
 	const plants = await Plants.findOne({
 		where:{
@@ -153,7 +131,8 @@ export const update_plant = async(req, res) => {
 			id_user:req.user_id,
 			plant_name: plant_name,
 			plant_condition: plant_condition,
-			id_field: id_field
+			id_field: id_field,
+			plant_quantity: plant_quantity
 		},{
 			where:{
 				id: req.params.id

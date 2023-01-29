@@ -129,9 +129,11 @@ return (
 			  	<th>No</th>
 				<th>Nama Tanaman</th>
 				<th>Kondisi Tanaman</th>
+				<th>Jumlah Tanaman</th>
 				<th>Kode Lahan</th>
 				<th>Lokasi Lahan</th>
 				<th>Temperatur Lahan</th>
+				<th>...</th>
               </tr>
             </thead>
             <tbody>
@@ -140,6 +142,7 @@ return (
 						<td> {index  + 1} </td>
 						<td> {plant.plant_name}</td>
 						<td> {plant.plant_condition}</td>
+						<td> {plant.plant_quantity}</td>
 						<td> {plant.field.field_code} </td>
 						<td> {plant.field.field_location} </td>
 						<td> {plant.field.weather_location} </td>

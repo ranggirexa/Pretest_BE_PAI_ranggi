@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Add_product from "./components/Add_product";
 import Dashboard from "./components/Dashboard";
 import Field_add from "./components/fields/Field_add";
 import Field_dashboard from "./components/fields/Field_dashboard";
@@ -17,7 +16,6 @@ function App() {
 		<Routes>
 			<Route exact path="/" element= {<Login/>} />
 			<Route path="/register" element= { <Register/>} />
-			<Route path="/dashboard/add_product" element= { <Add_product/>} />
 			<Route exact path="/dashboard" element={<><Navbar/><Dashboard/></>}/>
 			<Route path="/dashboard/fields" element= { <><Navbar/><Field_dashboard/></>} />
 			<Route path="/dashboard/fields/add" element= { <><Navbar/><Field_add/></>} />
