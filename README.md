@@ -8,7 +8,7 @@ Frontend: ReactJS
 
 ========================================================
 
-HOW TO RUN
+**HOW TO RUN**
 
 1. BACKEND
 1.1 buat database di local dengan nama 'pandawa_field'
@@ -30,4 +30,17 @@ HOW TO RUN
   
 ========================================================
 
-  Access to XMLHttpRequest at 'http://localhost:5000/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check:
+**Catatan Tambahan**
+
+jika mengalami error seperti :
+
+** 'Access to XMLHttpRequest at 'http://localhost:5000/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control'**
+
+untuk pengguna macos bisa eksekusi syntax berikut :
+
+_open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security_
+
+untuk lebih lengkapnya bisa dilihat pada tautan berikut :
+
+https://stackoverflow.com/questions/28206680/using-group-by-and-joins-in-sequelize
+
