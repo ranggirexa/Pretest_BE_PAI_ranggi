@@ -4,7 +4,7 @@ Database yang digunakan: postgreSQL
 Backend: NodeJS
 Frontend: ReactJS
 
-======================================================================================================================================================
+========================================================
 HOW TO RUN
 1. BACKEND
    1.1 buat database di local dengan nama 'pandawa_field'
@@ -18,5 +18,5 @@ HOW TO RUN
   2.2 jalankan sistem dengan perintah 'npm start'
   2.3 sistem akan terbuka otomatis pada jendela browser dengan url localhost:3000
   
-  ======================================================================================================================================================
+========================================================
   Access to XMLHttpRequest at 'http://localhost:5000/login' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check:
