@@ -1,7 +1,9 @@
 # Pretest_BE_PAI_ranggi
 
 Database yang digunakan: postgreSQL
+
 Backend: NodeJS
+
 Frontend: ReactJS
 
 ========================================================
