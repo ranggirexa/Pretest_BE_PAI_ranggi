@@ -46,3 +46,11 @@ untuk lebih lengkapnya bisa dilihat pada tautan berikut :
 
 https://stackoverflow.com/questions/28206680/using-group-by-and-joins-in-sequelize
 
+
+========================================================
+
+ **WALKTHROUGH**
+
+untuk walkthrough aplikasi bisa dilihat mealui link berikut
+
+https://drive.google.com/file/d/1pATkSPgUjdWKuo9tcSuSaP1K05FxoOam/view?usp=sharing
