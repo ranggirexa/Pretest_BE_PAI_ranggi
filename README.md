@@ -40,9 +40,9 @@ jika mengalami error seperti :
 
 untuk pengguna macos bisa eksekusi syntax berikut :
 
-_open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security_
+open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security_
 
 untuk lebih lengkapnya bisa dilihat pada tautan berikut :
 
-https://stackoverflow.com/questions/28206680/using-group-by-and-joins-in-sequelize
+
 
