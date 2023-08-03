@@ -46,3 +46,18 @@ untuk lebih lengkapnya bisa dilihat pada tautan berikut :
 
 
 
+
+========================================================
+
+ **WALKTHROUGH**
+
+untuk walkthrough aplikasi bisa dilihat mealui link berikut
+
+https://drive.google.com/file/d/1pATkSPgUjdWKuo9tcSuSaP1K05FxoOam/view?usp=sharing
+
+========================================================
+
+API DOCUMENTATION
+
+https://documenter.getpostman.com/view/12215985/2s935hQ7Aw
+
